@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
+public class RegularExpressionMatcher {
+
+    protected String regularExpressionString;
+    protected ArrayList<String> wordsToCompareAgainst;
+    protected Pattern pattern;
+
+    public RegularExpressionMatcher() {
+        regularExpressionString = "";
+        wordsToCompareAgainst = null;
+    }
+
+    public void setRegularExpressionString(String regexInput) {
+        regularExpressionString = regexInput;
+        pattern = Pattern.compile(regularExpressionString);
+    }
+
+    public String getRegularExpressionString() {
+        return regularExpressionString;
+    }
+
+    public void setWordsToCompareAgainst(ArrayList<String> wordsInput) {
+        wordsToCompareAgainst = wordsInput;
+    }
+
+    public ArrayList<String> findMatches() {
+
+        // TODO: Given the ArrayList wordsToCompareAgainst
+        // and the pattern object representing
+        // a regular expression, add to the ArrayList named matchingList
+        // the words that are in the wordsToCompareAgainst list that "match"
+        // (could have been generated from) the regular expression
+        ArrayList<String> matchingList = new ArrayList<String>();
+
+        for ( int i = 0; i < wordsToCompareAgainst.size(); i++){
+                String word = wordsToCompareAgainst.get(i);
+                if (pattern.matcher(word).matches() == true) matchingList.add(word);
+        }
+        // wordsToCompareAgainst has been filled with words via a separate
+        // method
+
+
+        return matchingList;
+    }
+
+}
